@@ -1,7 +1,9 @@
+*{
+   background-color: #c6ccd8;  
+}
 .App {
-  /* text-align: center; */
   justify-items: center;
-  margin-top: 2px;
+  margin: 5rem 10rem; 
 }
 .App-logo {
   height: 40vmin;
@@ -25,10 +27,10 @@
 .App-link {
   color: #61dafb;
 }
-table{
+/* table{
   background-color: rgb(245, 227, 234);
   border-radius: 6%;
-}
+} */
 td{
   padding-left: 1rem;
 }
@@ -50,4 +52,5 @@ button, input{
 .delete{
   background-color: red;
 }
+
 

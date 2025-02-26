@@ -1,0 +1,12 @@
+.add-task{
+    background-color: blue;
+}
+.input{
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    
+}
+.to-do{
+    width: 70%;
+}

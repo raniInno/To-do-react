@@ -1,4 +1,4 @@
-export const data =[
+export const dataArray =[
     {
         task: "task0",
         Status: "Complete",

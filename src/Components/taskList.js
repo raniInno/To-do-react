@@ -1,51 +1,91 @@
 import React, { useState } from "react";
-import { data } from "./data";
 import '../App.css';
-const Task =()=>{
-    const [status, setStatus] = useState("pending");
-    const num = [1,2,3];
-    const handleStatus = (num)=>{
+import Task from "./Task";
+import './taskList.css';
+import { useDispatch } from "react-redux";
+import {addtodo} from '../features/todos/TodoSlice';
+import { useSelector } from "react-redux";
+
+
+
+const TaskList =()=>{
+    const todos = useSelector(state => state.todos);
+    const [data, setData] = useState('');
+
+    const dispatch = useDispatch();
+    const handleSubmit =(e)=>{
+        e.preventDefault();
+
+        dispatch(addtodo(data))
+
 
     }
-    const handleAction =()=>{
 
-    }
+
     return(
         <> 
-        <div>
-            <input type="text" placeholder="Add a new task"/>
-            <button> add task</button>
-            </div>  
+        <div className="to-do">
+
+            {/* take input from the user */}
+            <form method="#" onSubmit={handleSubmit}>
+            <div className="input">
+                <input type="text" placeholder="Add a new task" value={data} 
+                onChange={(e)=> setData(e.target.value)}
+                name="description"  
+                className="input1"/>
+
+
+                <button 
+                onClick={handleSubmit} 
+                className="add-Task" 
+                type="submit" >
+                     Add task
+                </button>
+
+            </div>           
+        </form>
+
+
+
+            
+            </div>
+
+            {/* list of task by reducer */}
+            <div>My Tasks</div>  
 
             <hr width="70%"/>
 
-        <table 
+        <table className="table"
             cellPadding="1px" 
             cellSpacing="5px"
             
         >
-            <tr> 
-                <th width="60%">Title</th>
+            <thead><tr>
+                <th width="5%">S.no</th> 
+                <th width="55%">Title</th>
                 <th width ="20%">Status</th>
                 <th width="20%">Actions</th>
-            </tr>
-            {data.map((task,index)=>
-            <tr>
-                <td >
-                  {task.task}
-                </td>
-                <td >
-                    <button onClick={handleStatus(index)} className={task.Status}>
-                        {task.Status}
-                    </button>
-                </td>
-                <td> <button onClick={handleAction(index)} className="delete"> {task.Action}</button></td>
+            </tr></thead>
 
-            </tr>
-            )}
-           
+            <tbody>
+            {
+                todos.map((todo,index)=>(
+                    <>
+                    <Task
+                    index={todo.id}
+                    key={index}
+                    task = {todo.text}
+                    status={todo.Status}
+                    />
+                    </>
+                    
+                    
+                ))
+            }
+            </tbody>
+            
         </table>
         </>
     )
 }
-export default Task;
+export default TaskList;

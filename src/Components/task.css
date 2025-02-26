@@ -1,0 +1,27 @@
+.Task{
+background-color: blue;
+} 
+.input1{
+  width: 126%;
+    height: 40px;
+    background-color: rgba(248, 243, 237, 0.553);
+}
+button{
+  background-color: rgba(161, 192, 194, 0.666);
+}
+button, input{
+    border-radius: 8px;
+    padding:10x;
+    margin: 1px;
+    width: 80%;
+    
+  }
+  .pending{
+    background-color: yellow;
+  }
+  .Complete{
+    background-color: rgb(66, 233, 66);
+  }
+  .delete{
+    background-color: red;
+  }
